@@ -1,7 +1,7 @@
 # CompressIt — File Compression Chrome Extension (Team - Chole Rice Very Nice)
 ## Overview
 
-**CompressIt** is a Chrome Extension that compresses and decompresses files entirely inside your browser — no server, no internet connection, no installation beyond Chrome itself. It supports four file categories: **text** (`.txt`, `.csv`), **image** (`.png`, `.jpg`), **audio** (`.mp3`, `.wav`), and **video** (`.mp4`, `.avi`, `.mkv`). Every compression run displays the original size, compressed size, compression ratio, and space savings percentage directly in the popup. For lossy formats, PSNR and SSIM quality scores are computed and shown. For lossless formats, a SHA-256 hash is verified on decompression to confirm a byte-for-byte perfect rebuild. All algorithms are implemented from scratch in pure JavaScript — no external CDN calls are made at runtime.
+**CompressIt** is a Chrome Extension that compresses and decompresses files entirely inside your browser — no server, no internet connection, no installation beyond Chrome itself. It supports four file categories: **text** (`.txt`, `.csv`), **image** (`.png`, `.jpg`), **audio** (`.mp3`, `.wav`), and **video** (`.mp4`). Every compression run displays the original size, compressed size, compression ratio, and space savings percentage directly in the popup. For lossy formats, PSNR and SSIM quality scores are computed and shown. For lossless formats, a SHA-256 hash is verified on decompression to confirm a byte-for-byte perfect rebuild. All algorithms are implemented from scratch in pure JavaScript — no external CDN calls are made at runtime.
 
 ---
 
@@ -9,18 +9,18 @@
 
 | # | Name | Role |
 |---|------|------|
-| 1 | Member 1 | Lossless compression algorithms — LZ77 sliding-window + Huffman coding |
-| 2 | Member 2 | Lossy compression — image colour quantisation, audio bit-depth reduction |
-| 3 | Member 3 | Extension UI — `popup.html`, `popup.css`, layout and interaction design |
-| 4 | Member 4 | Decompression logic, SHA-256 hash verification, PSNR/SSIM quality metrics |
-| 5 | Member 5 | README, documentation, algorithm explanations |
-| 6 | Member 6 | Testing, compression results table, sample file preparation |
+| 1 | Prashant| Lossless compression algorithms — LZ77 sliding-window + Huffman coding |
+| 2 | Paras Gupta| Lossy compression — image colour quantisation, audio bit-depth reduction |
+| 3 | Hardik| Extension UI — `popup.html`, `popup.css`, layout and interaction design |
+| 4 | Pratyaksh Semwal | Decompression logic, SHA-256 hash verification, PSNR/SSIM quality metrics |
+| 5 | Naman Yadav | README, documentation, algorithm explanations |
+| 6 | Saksham | Testing, compression results table, sample file preparation |
 
 ---
 
 ## Features
 
-- **File type support:** `.txt`, `.csv` (text) · `.png` (lossless image) · `.jpg`/`.jpeg` (lossy image) · `.mp3` (audio, lossless container) · `.wav` (audio, lossy) · `.mp4`, `.avi`, `.mkv` (video)
+- **File type support:** `.txt`, `.csv` (text) · `.png` (lossless image) · `.jpg`/`.jpeg` (lossy image) · `.mp3` (audio, lossless container) · `.wav` (audio, lossy) · `.mp4` (video)
 - **Compression algorithms:**
   - Text → LZ77 sliding-window + Huffman coding (lossless)
   - PNG → Huffman coding on raw file bytes (lossless)
@@ -99,7 +99,7 @@ compressit/
 
 1. Click the **CompressIt** icon in the Chrome toolbar to open the popup.
 2. On the **Compress** tab, either drag and drop a file onto the upload zone, or click **browse** to open the file picker.
-3. Supported formats: `.txt`, `.csv`, `.png`, `.jpg`, `.mp3`, `.wav`, `.mp4`, `.avi`, `.mkv`.
+3. Supported formats: `.txt`, `.csv`, `.png`, `.jpg`, `.mp3`, `.wav`, `.mp4`.
 4. For lossy formats (`.jpg`, `.wav`), a **Quality** slider appears. Drag left for a smaller file, right for higher quality.
 5. Click **Compress File**.
 6. The results panel shows:
