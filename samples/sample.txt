@@ -1,0 +1,220 @@
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+
+The quick brown fox jumps over the lazy dog.
+File compression is the process of reducing the size of one or more files so they occupy less storage space.
+Compression algorithms exploit patterns, repetitions, and statistically predictable sequences in data.
+Lossless compression allows perfect reconstruction: ZIP, PNG, FLAC.
+Lossy compression discards imperceptible data: JPEG, MP3, MP4.
+
+Shannon entropy measures the theoretical lower bound on compression.
+Run-Length Encoding replaces consecutive repeated values with count+value pairs.
+Dictionary-based methods like LZ77 replace recurring patterns with back-references.
+Huffman coding assigns shorter codes to more frequent symbols.
+

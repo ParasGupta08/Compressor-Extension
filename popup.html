@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CompressIt</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+
+  <!-- ─── HEADER ──────────────────────────────────────── -->
+  <header class="app-header">
+    <div class="logo-group">
+      <div class="logo-icon">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <rect x="2" y="2" width="8" height="8" rx="1.5" fill="var(--accent)"/>
+          <rect x="12" y="2" width="8" height="8" rx="1.5" fill="var(--accent)" opacity="0.6"/>
+          <rect x="2" y="12" width="8" height="8" rx="1.5" fill="var(--accent)" opacity="0.6"/>
+          <rect x="12" y="12" width="8" height="8" rx="1.5" fill="var(--accent)" opacity="0.35"/>
+        </svg>
+      </div>
+      <span class="logo-text">CompressIt</span>
+    </div>
+    <span class="version-tag">v1.0</span>
+  </header>
+
+  <!-- ─── TABS ─────────────────────────────────────────── -->
+  <div class="tabs">
+    <button class="tab active" data-tab="compress">Compress</button>
+    <button class="tab" data-tab="decompress">Decompress</button>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- TAB: COMPRESS                                       -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div id="tab-compress" class="tab-content active">
+
+    <!-- Upload Zone -->
+    <div class="upload-zone" id="uploadZone">
+      <div class="upload-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <path d="M16 4L16 20M16 4L10 10M16 4L22 10" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M4 24H28" stroke="var(--muted)" stroke-width="2" stroke-linecap="round"/>
+          <rect x="4" y="24" width="24" height="4" rx="1" fill="var(--surface2)" opacity="0.5"/>
+        </svg>
+      </div>
+      <p class="upload-label">Drop a file or <span class="link" id="browseBtn">browse</span></p>
+      <p class="upload-hint">Supports .txt .csv .png .jpg .mp3 .wav .mp4</p>
+      <input type="file" id="fileInput" accept=".txt,.csv,.png,.jpg,.jpeg,.mp3,.wav,.mp4,.avi,.mkv" hidden />
+    </div>
+
+    <!-- Quality slider — shown only for lossy types -->
+    <div class="quality-row hidden" id="qualityRow">
+      <label class="quality-label">
+        Quality
+        <span class="quality-value" id="qualityDisplay">75</span>
+      </label>
+      <input type="range" id="qualitySlider" min="30" max="90" value="70" class="slider" />
+      <div class="quality-hints">
+        <span>Smaller file</span><span>Higher quality</span>
+      </div>
+    </div>
+
+    <!-- Selected file info -->
+    <div class="file-info hidden" id="fileInfo">
+      <div class="file-chip">
+        <span class="file-chip-icon" id="fileTypeIcon">📄</span>
+        <div class="file-chip-text">
+          <span class="file-name" id="fileName">—</span>
+          <span class="file-size" id="fileSizeOrig">—</span>
+        </div>
+        <button class="clear-btn" id="clearBtn" title="Clear">✕</button>
+      </div>
+    </div>
+
+    <!-- Compress button -->
+    <button class="btn-primary" id="compressBtn" disabled>
+      <span class="btn-text">Compress File</span>
+      <span class="btn-spinner hidden" id="compressSpinner">
+        <svg class="spin" width="16" height="16" viewBox="0 0 16 16">
+          <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="2" stroke-dasharray="25 12" fill="none"/>
+        </svg>
+      </span>
+    </button>
+
+    <!-- Results Panel -->
+    <div class="results-panel hidden" id="resultsPanel">
+      <div class="results-header">
+        <span class="results-title">Compression Results</span>
+        <span class="algo-badge" id="algoBadge">LZ77 + Huffman</span>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <span class="metric-label">Original Size</span>
+          <span class="metric-value" id="origSize">—</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">Compressed Size</span>
+          <span class="metric-value highlight" id="compSize">—</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">Compression Ratio</span>
+          <span class="metric-value" id="compRatio">—</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">Space Saved</span>
+          <span class="metric-value accent" id="spaceSaved">—</span>
+        </div>
+      </div>
+
+      <!-- Lossy quality metrics (hidden for lossless) -->
+      <div class="quality-metrics hidden" id="qualityMetrics">
+        <div class="qm-row">
+          <span class="qm-label">PSNR</span>
+          <span class="qm-value" id="psnrValue">—</span>
+          <span class="qm-badge" id="psnrBadge">—</span>
+        </div>
+        <div class="qm-row">
+          <span class="qm-label">SSIM</span>
+          <span class="qm-value" id="ssimValue">—</span>
+          <span class="qm-badge" id="ssimBadge">—</span>
+        </div>
+      </div>
+
+      <!-- Visual compression bar -->
+      <div class="compress-bar-wrap">
+        <div class="compress-bar-track">
+          <div class="compress-bar-fill" id="compressBarFill"></div>
+        </div>
+        <span class="compress-bar-label" id="compressBarLabel">—</span>
+      </div>
+
+      <button class="btn-download" id="downloadCompressed">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M7 1v8M7 9L4 6M7 9l3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M1 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Download Compressed File
+      </button>
+    </div>
+
+    <!-- Error message -->
+    <div class="error-box hidden" id="errorBox">
+      <span class="error-icon">⚠</span>
+      <span class="error-text" id="errorText">Something went wrong.</span>
+    </div>
+
+  </div><!-- /tab-compress -->
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- TAB: DECOMPRESS                                     -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div id="tab-decompress" class="tab-content hidden">
+
+    <div class="upload-zone" id="uploadZone2">
+      <div class="upload-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <path d="M16 28L16 12M16 28L10 22M16 28L22 22" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M4 8H28" stroke="var(--muted)" stroke-width="2" stroke-linecap="round"/>
+          <rect x="4" y="4" width="24" height="4" rx="1" fill="var(--surface2)" opacity="0.5"/>
+        </svg>
+      </div>
+      <p class="upload-label">Drop a <code>.cit</code> file or <span class="link" id="browseBtn2">browse</span></p>
+      <p class="upload-hint">Upload a .cit file previously compressed by CompressIt</p>
+      <input type="file" id="fileInput2" accept=".cit" hidden />
+    </div>
+
+    <div class="file-info hidden" id="fileInfo2">
+      <div class="file-chip">
+        <span class="file-chip-icon">📦</span>
+        <div class="file-chip-text">
+          <span class="file-name" id="fileName2">—</span>
+          <span class="file-size" id="fileSize2">—</span>
+        </div>
+        <button class="clear-btn" id="clearBtn2" title="Clear">✕</button>
+      </div>
+    </div>
+
+    <button class="btn-primary" id="decompressBtn" disabled>
+      <span class="btn-text">Decompress File</span>
+      <span class="btn-spinner hidden" id="decompressSpinner">
+        <svg class="spin" width="16" height="16" viewBox="0 0 16 16">
+          <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="2" stroke-dasharray="25 12" fill="none"/>
+        </svg>
+      </span>
+    </button>
+
+    <!-- Decompress Results -->
+    <div class="results-panel hidden" id="decompressResults">
+      <div class="results-header">
+        <span class="results-title">Decompression Results</span>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <span class="metric-label">Compressed Size</span>
+          <span class="metric-value" id="d-compSize">—</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">Restored Size</span>
+          <span class="metric-value highlight" id="d-origSize">—</span>
+        </div>
+      </div>
+
+      <!-- Hash Verification (lossless) -->
+      <div class="hash-section" id="hashSection">
+        <div class="hash-row">
+          <span class="hash-label">SHA-256 Verification</span>
+          <span class="hash-status" id="hashStatus">—</span>
+        </div>
+        <div class="hash-value-row">
+          <span class="hash-chip" id="hashOriginal">Original: computing…</span>
+        </div>
+        <div class="hash-value-row">
+          <span class="hash-chip" id="hashRestored">Restored: computing…</span>
+        </div>
+      </div>
+
+      <!-- Lossy quality metrics after rebuild -->
+      <div class="quality-metrics hidden" id="d-qualityMetrics">
+        <div class="qm-row">
+          <span class="qm-label">PSNR (rebuild)</span>
+          <span class="qm-value" id="d-psnrValue">—</span>
+          <span class="qm-badge" id="d-psnrBadge">—</span>
+        </div>
+        <div class="qm-row">
+          <span class="qm-label">SSIM (rebuild)</span>
+          <span class="qm-value" id="d-ssimValue">—</span>
+          <span class="qm-badge" id="d-ssimBadge">—</span>
+        </div>
+      </div>
+
+      <button class="btn-download" id="downloadDecompressed">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M7 1v8M7 9L4 6M7 9l3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M1 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Download Restored File
+      </button>
+    </div>
+
+    <div class="error-box hidden" id="errorBox2">
+      <span class="error-icon">⚠</span>
+      <span class="error-text" id="errorText2">Something went wrong.</span>
+    </div>
+
+  </div><!-- /tab-decompress -->
+
+  <footer class="app-footer">
+    MACS JC Project 2 · CompressIt Extension
+  </footer>
+
+<script src="lib/pako.min.js"></script>
+<script src="lib/compressor.js"></script>
+<script src="lib/upng.min.js"></script>
+<script src="lib/imageLossless.js"></script>
+<script src="lib/imageLossy.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>
