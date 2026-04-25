@@ -1,33 +1,60 @@
 # CompressIt — File Compression Chrome Extension (Team - Chole Rice Very Nice)
 ## Overview
 
-**CompressIt** is a Chrome Extension that compresses and decompresses files entirely inside your browser — no server, no internet connection, no installation beyond Chrome itself. It supports four file categories: **text** (`.txt`, `.csv`), **image** (`.png`, `.jpg`), **audio** (`.mp3`, `.wav`), and **video** (`.mp4`). Every compression run displays the original size, compressed size, compression ratio, and space savings percentage directly in the popup. For lossy formats, PSNR and SSIM quality scores are computed and shown. For lossless formats, a SHA-256 hash is verified on decompression to confirm a byte-for-byte perfect rebuild. All algorithms are implemented from scratch in pure JavaScript — no external CDN calls are made at runtime.
-
----
-
-## Team Members
-
-| # | Name | Role |
-|---|------|------|
-| 1 | Prashant| Lossless compression algorithms — LZ77 sliding-window + Huffman coding |
-| 2 | Paras Gupta| Lossy compression — image colour quantisation, audio bit-depth reduction |
-| 3 | Hardik| Extension UI — `popup.html`, `popup.css`, layout and interaction design |
-| 4 | Pratyaksh Semwal | Decompression logic, SHA-256 hash verification, PSNR/SSIM quality metrics |
-| 5 | Naman Yadav | README, documentation, algorithm explanations |
-| 6 | Saksham | Testing, compression results table, sample file preparation |
+**CompressIt** is a Chrome Extension that compresses and decompresses files entirely inside your browser — no server, no internet connection, no installation beyond Chrome itself. It supports four file categories: **text** (`.txt`, `.csv`), **image** (`.png`, `.jpg`), **audio** (`.mp3`, `.wav`), and **video** (`.mp4`). Every compression run displays the original size, compressed size, compression ratio, and space savings percentage directly in the popup. For lossy formats, PSNR and SSIM quality scores are computed and shown. For lossless formats (for text & audio), a SHA-256 hash is verified on decompression to confirm a byte-for-byte perfect rebuild. All algorithms are implemented from scratch in pure JavaScript — no external CDN calls are made at runtime.
 
 ---
 
 ## Features
 
 - **File type support:** `.txt`, `.csv` (text) · `.png` (lossless image) · `.jpg`/`.jpeg` (lossy image) · `.mp3` (audio, lossless container) · `.wav` (audio, lossy) · `.mp4` (video)
-- **Compression algorithms:**
-  - Text → LZ77 sliding-window + Huffman coding (lossless)
-  - PNG → Huffman coding on raw file bytes (lossless)
-  - JPG → Colour quantisation on RGBA pixel data + Huffman (lossy)
-  - WAV → Bit-depth reduction + Huffman (lossy)
-  - MP3 → Huffman coding on binary data (lossless container)
-  - Video → Delta encoding + Huffman coding (lossless)
+
+## Compression Algorithms
+
+### Techniques Used
+
+- **Text (.txt, .csv)**  
+  LZ77 (sliding window) + Huffman coding (**lossless**)
+
+- **PNG (.png)**  
+  UPNG-based recompression using DEFLATE (LZ77 + Huffman) with PNG filtering (**lossless**)  
+  *Note: File is re-encoded — binary may differ, but image remains identical*
+
+- **JPG (.jpg, .jpeg)**  
+  DCT (Discrete Cosine Transform) + quantization + Huffman coding (**lossy**)  
+  *Re-encoded to WebP/JPEG — output format may differ from original*
+
+- **WAV (.wav)**  
+  Bit-depth reduction and/or downsampling (**lossy**)
+
+- **MP3 (.mp3)**  
+  Huffman coding applied to binary data (**lossless container-level compression**)
+
+- **Video (.mp4, .avi, .mkv)**  
+  Lossy re-encoding using inter-frame compression (motion estimation), DCT, and quantization
+
+
+---
+
+## Output Format Behavior
+
+- **Text (TXT, CSV)**  
+  Restored exactly (**bit-perfect match**)
+
+- **PNG**  
+  Lossless but re-encoded:  
+  pixel data is identical, but binary file may differ
+
+- **MP3**  
+  Restored exactly (**bit-perfect match**)
+
+- **JPG, WAV, Video**  
+  Lossy: restored approximately, not identical to original
+
+- **JPEG images may be re-encoded as WebP**  
+  Decompression may return a different file format (e.g., `.webp` instead of `.jpg`)
+
+## UI
 - **Metrics displayed after every compression:** Original size · Compressed size · Compression Ratio (X:1) · Space Savings (%)
 - **Quality metrics for lossy formats:** PSNR (dB) with Excellent / Acceptable / Degraded badge · SSIM (0–1) with badge
 - **Lossless rebuild verification:** SHA-256 hash of the restored file compared against the hash recorded at compression time — displays "✓ Perfect Match" or "✗ Mismatch"
@@ -72,7 +99,7 @@ compressit/
 
 ## Installation
 
-### Method A — Load Unpacked *(Recommended)*
+### Method A — Load Unpacked 
 
 1. **Download** or clone this repository to your computer.
 2. Open **Google Chrome** and go to `chrome://extensions`.
@@ -126,14 +153,14 @@ compressit/
 
 Tests performed on the sample files in the `samples/` folder.
 
-| File | Type | Algorithm | Original Size | Compressed Size | Ratio | Space Saved |
-|------|------|-----------|:------------:|:---------------:|:-----:|:-----------:|
-| `sample.txt` | Text | LZ77 + Huffman | 13,740 B | ~4,100 B | ~3.4:1 | ~70% |
-| `sample.csv` | Text | LZ77 + Huffman | 3,310 B | ~1,200 B | ~2.8:1 | ~64% |
-| `sample.png` | Image (lossless) | Huffman | 1,282 B | ~1,050 B | ~1.2:1 | ~18% |
-| `sample.jpg` | Image (lossy, Q=0.75) | Colour Quant + Huffman | 6,299 B | ~3,800 B | ~1.7:1 | ~40% |
-| `sample.wav` | Audio (lossy, Q=0.75) | Bit-Depth + Huffman | 16,044 B | ~9,000 B | ~1.8:1 | ~44% |
-| `sample.mp4` | Video (lossless) | Delta + Huffman | — | — | ~1.1:1 | ~8–15% |
+| File         | Type                          | Original Size | Compressed Size | Space Saved |
+|--------------|-------------------------------|---------------|-----------------|-------------|
+| `sample.txt` | Text                          | 13,740 B      | ~11,070 B        | ~17.5%        |
+| `sample.csv` | Text                          | 3,230 B       | ~1,250 B        | ~61.5%        |
+| `sample.png` | Image (lossless, re-encoded)  | 1,250 B       | ~778 B        | ~39.3%        |
+| `sample.jpg` | Image (lossy, Q=0.75)         | 6,150 B       | ~2,040 B        | ~66.9%        |
+| `sample.wav` | Audio (lossy, Q=0.75)         | 15,670 B      | ~11,820 B        | ~22.4%        |
+| `sample.mp4` | Video (lossy, Q = 75)                 | 9380000   B          | ~3560000 B              | ~62.1%      |
 
 > **Note:** Results vary with file content entropy. Already-compressed binary formats (MP3, MP4) have low redundancy, so gains are modest — this is expected behaviour, not a defect.
 
@@ -141,7 +168,7 @@ Tests performed on the sample files in the `samples/` folder.
 
 ## Rebuild Verification
 
-### Lossless Files (`.txt`, `.csv`, `.png`, `.mp3`, `.mp4`)
+### Lossless Files (`.txt`, `.csv`,  `.mp3`, )
 
 After decompressing a lossless `.cit` file, CompressIt computes the SHA-256 hash of the restored file and displays it alongside the hash stored at compression time. Matching hashes confirm a byte-for-byte perfect rebuild.
 
@@ -188,7 +215,7 @@ JPEG files are already compressed at the binary level and do not benefit from LZ
 
 WAV stores raw PCM samples as bytes. By zeroing the lower N bits of each sample value (keeping only the top bits), the extension reduces effective bit-depth — analogous to downgrading from 16-bit to 8-bit or 4-bit audio. The WAV header (44 bytes) is preserved verbatim so the restored file is a structurally valid WAV. Bit-masking also creates many identical sample values, which Huffman then compresses effectively.
 
-### Delta Encoding — Lossless Video Compression (MP4/AVI/MKV)
+### Delta Encoding — Lossless Video Compression (MP4)
 
 Each byte is replaced by its difference from the preceding byte (modulo 256). Encoded video bitstreams change slowly due to spatial and temporal coherence, so deltas cluster near zero — a distribution that Huffman encodes very compactly. True H.264/H.265 re-encoding would require bundling `ffmpeg.wasm` (~30 MB), which is impractical for a popup extension; delta + Huffman is a practical lossless alternative that achieves 8–15% reduction on typical MP4 containers.
 
@@ -204,19 +231,28 @@ Each byte is replaced by its difference from the preceding byte (modulo 256). En
 6. **No real-time progress indicator.** For files above ~5 MB, the LZ77 pass (O(n × w) complexity) may take a few seconds with no progress feedback. The button is disabled and a spinner is shown.
 7. **Small-file Huffman overhead.** For files under ~100 bytes, the Huffman code table itself may exceed the savings, producing a `.cit` file larger than the input. This is mathematically unavoidable.
 
+
+## Team Members
+
+| # | Name | Contribution |
+|---|------|------|
+| 1 | Prashant| 20% |
+| 2 | Paras Gupta| 20% |
+| 3 | Hardik| 20% |
+| 4 | Pratyaksh Semwal | 20% |
+| 5 | Naman Yadav | 10% |
+| 6 | Saksham | 10% |
+
 ---
 
 ## References
 
-1. Shannon, C. E. (1948). *A Mathematical Theory of Communication.* Bell System Technical Journal.
-2. Ziv, J., & Lempel, A. (1977). *A universal algorithm for sequential data compression.* IEEE Transactions on Information Theory, 23(3), 337–343.
-3. Huffman, D. A. (1952). *A method for the construction of minimum-redundancy codes.* Proceedings of the IRE, 40(9), 1098–1101.
-4. Google. *Chrome Extensions — Manifest V3 Overview.* https://developer.chrome.com/docs/extensions/mv3/
-5. MDN Web Docs. *SubtleCrypto: digest() method.* https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest
-6. MDN Web Docs. *Canvas API — ImageData.* https://developer.mozilla.org/en-US/docs/Web/API/ImageData
-7. Soundfile. *WAV File Format Specification.* http://soundfile.sapp.org/doc/WaveFormat/
-8. ITU-T Recommendation J.247. *Objective perceptual multimedia video quality measurement.* (PSNR / SSIM definitions)
-9. Anthropic Claude (2026). Used for algorithm design guidance and code review assistance.
+1. Google. *Chrome Extensions — Manifest V3 Overview.* https://developer.chrome.com/docs/extensions/mv3/
+2. MDN Web Docs. *SubtleCrypto: digest() method.* https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest
+3. MDN Web Docs. *Canvas API — ImageData.* https://developer.mozilla.org/en-US/docs/eb/API/ImageData
+4. Soundfile. *WAV File Format Specification.* http://soundfile.sapp.org/doc/WaveFormat/
+5. ITU-T Recommendation J.247. *Objective perceptual multimedia video quality measurement.* (PSNR / SSIM definitions)
+6. Anthropic Claude (2026). Used for algorithm design guidance and code.
 
 ---
 
