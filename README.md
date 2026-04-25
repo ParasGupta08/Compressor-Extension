@@ -1,13 +1,4 @@
-# CompressIt — File Compression Chrome Extension
-
-![Status](https://img.shields.io/badge/Status-Submitted-orange?style=flat-square)
-![Project](https://img.shields.io/badge/MACS%20JC-Project%202-blueviolet?style=flat-square)
-![Manifest](https://img.shields.io/badge/Manifest-v3-blue?style=flat-square)
-![Language](https://img.shields.io/badge/Language-JavaScript-f7df1e?style=flat-square&logo=javascript&logoColor=black)
-![Chrome](https://img.shields.io/badge/Chrome-120%2B-green?style=flat-square&logo=googlechrome&logoColor=white)
-
----
-
+# CompressIt — File Compression Chrome Extension (Team - Chole Rice Very Nice)
 ## Overview
 
 **CompressIt** is a Chrome Extension that compresses and decompresses files entirely inside your browser — no server, no internet connection, no installation beyond Chrome itself. It supports four file categories: **text** (`.txt`, `.csv`), **image** (`.png`, `.jpg`), **audio** (`.mp3`, `.wav`), and **video** (`.mp4`, `.avi`, `.mkv`). Every compression run displays the original size, compressed size, compression ratio, and space savings percentage directly in the popup. For lossy formats, PSNR and SSIM quality scores are computed and shown. For lossless formats, a SHA-256 hash is verified on decompression to confirm a byte-for-byte perfect rebuild. All algorithms are implemented from scratch in pure JavaScript — no external CDN calls are made at runtime.
